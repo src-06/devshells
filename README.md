@@ -9,6 +9,7 @@ A collection of Nix flake templates providing reproducible development environme
 | `empty` | Minimal development environment template |
 | `postgresql` | PostgreSQL development environment with helper scripts |
 | `mariadb` | MariaDB development environment with helper scripts |
+| `prisma` | Prisma development environment with prisma-engines |
 
 ## Usage
 
@@ -28,6 +29,12 @@ nix flake init --template github:src-06/devshells#postgresql
 
 ```bash
 nix flake init --template github:src-06/devshells#mariadb
+```
+
+### Prisma Template
+
+```bash
+nix flake init --template github:src-06/devshells#prisma
 ```
 
 ## Database Templates
@@ -53,6 +60,13 @@ db status  # Check database status
 - **Port:** `3306`
 - **User:** `root`
 - **Database:** `mariadb`
+
+## Prisma Template
+
+The Prisma template provides a development environment for working with Prisma ORM:
+
+- **Includes:** `prisma-engines` (v7 by default, compatible with Prisma 5+)
+- **Includes:** OpenSSL dev libraries for native database connectors
 
 ## Supported Systems
 

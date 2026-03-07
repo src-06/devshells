@@ -32,15 +32,7 @@
                 text = builtins.readFile ./scripts/db.sh;
               })
               mariadb
-
-              # For NixOS user if can't use prisma cli
-              # openssl
-              # prisma-engines_7 # or prisma-engines_6
             ];
-            shellHook = ''
-              # export OPENSSL_DIR=${pkgs.openssl.dev}
-              # export OPENSSL_LIB_DIR=${pkgs.openssl.out}/lib
-            '';
           };
         }
       );

@@ -21,6 +21,11 @@
           path = ./postgresql;
           description = "PostgreSQL Development Environment";
         };
+
+        prisma = {
+          path = ./prisma;
+          description = "Prisma Development Environment";
+        };
       };
     };
 }

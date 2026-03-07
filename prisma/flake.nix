@@ -1,5 +1,5 @@
 {
-  description = "PostgreSQL Development Environment";
+  description = "Prisma Development Environment";
 
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -27,12 +27,13 @@
         {
           default = pkgs.mkShellNoCC {
             packages = with pkgs; [
-              (writeShellApplication {
-                name = "db";
-                text = builtins.readFile ./scripts/db.sh;
-              })
-              postgresql
+              openssl
+              prisma-engines_7 # or prisma-engines_6
             ];
+            shellHook = ''
+              export OPENSSL_DIR=${pkgs.openssl.dev}
+              export OPENSSL_LIB_DIR=${pkgs.openssl.out}/lib
+            '';
           };
         }
       );

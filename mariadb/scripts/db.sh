@@ -30,7 +30,7 @@ case "$CMD" in
       --log-error="$LOG_FILE" &
 
     echo "Waiting for mariadb to be ready..."
-    for _ in ${seq 1 30); do
+    for i in {1..30}; do
       if mariadb-admin --socket="$SOCKET" ping &>/dev/null; then
         break
       fi
