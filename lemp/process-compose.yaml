@@ -7,7 +7,7 @@ processes:
 
   mariadb:
     command: |
-      mariadbd-safe \
+      mariadbd \
         --datadir=$(pwd)/.lemp/cache/data \
         --socket=$(pwd)/.lemp/cache/run/mysqld.sock \
         --port=3306 \
