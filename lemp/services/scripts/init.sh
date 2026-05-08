@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
-DATA_DIR="$PWD/.lemp/cache/data"
+CACHE_DIR="$PWD/services/cache"
+DATA_DIR="$CACHE_DIR/data"
 
 if [ ! -d "$DATA_DIR/mysql" ]; then
-  mkdir -p "$DATA_DIR" .lemp/cache/run .lemp/cache/logs
+  mkdir -p "$DATA_DIR" "$CACHE_DIR/run" "$CACHE_DIR/logs"
   mariadb-install-db \
     --datadir="$DATA_DIR" \
     --auth-root-authentication-method=normal \

@@ -101,7 +101,7 @@ The LEMP template provides a local LEMP stack using process-compose:
 - **phpMyAdmin:** Included for database management (accessible via configured port)
 
 ### Services:
-- **Nginx:** Port 8888 (HTTPS)
+- **Nginx:** [https://localhost:8888](https://localhost:8888) or [https://127.0.0.1:8888](https://127.0.0.1:8888)
 - **PHP-FPM:** Runs via process-compose
 - **MariaDB:** Runs via process-compose
 

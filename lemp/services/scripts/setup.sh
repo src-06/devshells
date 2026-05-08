@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-BASE_DIR="$PWD/.lemp"
+BASE_DIR="$PWD/services"
 CACHE_DIR="$BASE_DIR/cache"
 
 mkdir -p "$CACHE_DIR"

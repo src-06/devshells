@@ -32,17 +32,15 @@
               nginx
               process-compose
 
-              # Tools setup (After setup complete you can remove this packages)
+              # Optional tools setup (After setup complete you can remove this packages)
               wget
               gnutar
               unzip
               openssl
-              # Tools setup
             ];
             shellHook = ''
-              bash .lemp/scripts/setup.sh
+              bash services/scripts/setup.sh
               echo "To start LEMP Stack run command \`process-compose up\`!!!"
-              echo ""
             '';
           };
         }
