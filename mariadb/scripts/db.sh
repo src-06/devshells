@@ -4,9 +4,9 @@ set -e
 CMD="$1"
 BASE_DIR="$PWD/.mariadb"
 DATA_DIR="$BASE_DIR/data"
-SOCKET="$BASE_DIR/mysql.sock"
-PID_FILE="$BASE_DIR/mysql.pid"
-LOG_FILE="$BASE_DIR/mysql.log"
+SOCKET="$BASE_DIR/run/mysql.sock"
+PID_FILE="$BASE_DIR/run/mysql.pid"
+LOG_FILE="$BASE_DIR/logs/mysql.log"
 
 mkdir -p "$BASE_DIR"
 
