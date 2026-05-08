@@ -5,7 +5,7 @@ CMD="$1"
 BASE_DIR="$PWD/.postgres"
 DATA_DIR="$BASE_DIR/data"
 SOCKET_DIR="$BASE_DIR/socket"
-LOG_FILE="$BASE_DIR/postgres.log"
+LOG_FILE="$BASE_DIR/logs/postgres.log"
 
 export PGHOST="$SOCKET_DIR"
 export PGPORT=5432
