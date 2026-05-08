@@ -8,6 +8,9 @@ SOCKET="$BASE_DIR/run/mysql.sock"
 PID_FILE="$BASE_DIR/run/mysql.pid"
 LOG_FILE="$BASE_DIR/logs/mysql.log"
 
+export DBHOST=127.0.0.1
+export DBPORT=3306
+
 mkdir -p "$BASE_DIR"
 
 case "$CMD" in
@@ -24,8 +27,8 @@ case "$CMD" in
     mariadbd \
       --datadir="$DATA_DIR" \
       --socket="$SOCKET" \
-      --port=3306 \
-      --bind-address=127.0.0.1 \
+      --port="$DBPORT" \
+      --bind-address="$DBHOST" \
       --pid-file="$PID_FILE" \
       --log-error="$LOG_FILE" &
 
@@ -44,8 +47,8 @@ case "$CMD" in
 
     echo ""
     echo "========================================"
-    echo "  Host: 127.0.0.1"
-    echo "  Port: 3306"
+    echo "  Host: $DBHOST"
+    echo "  Port: $DBPORT"
     echo "  User: root"
     echo "  Password: (no password)"
     echo "  Database: mariadb"
