@@ -1,0 +1,35 @@
+version: 0.5
+
+processes:
+  init:
+    command: |
+      bash .lemp/scripts/init.sh
+
+  mariadb:
+    command: |
+      mariadbd-safe \
+        --datadir=$(pwd)/.lemp/cache/data \
+        --socket=$(pwd)/.lemp/cache/run/mysqld.sock \
+        --port=3306 \
+        --bind-address=127.0.0.1 \
+        --pid-file=$(pwd)/.lemp/cache/run/mysqld.pid \
+        --log-error=$(pwd)/.lemp/cache/logs/mysqld.log
+    availability:
+      restart: on_failure
+
+  php-fpm:
+    command: |
+      php-fpm \
+        -p $(pwd) \
+        -y $(pwd)/.lemp/config/fpm/php-fpm.conf
+    availability:
+      restart: on_failure
+
+  nginx:
+    command: |
+      nginx \
+        -p $(pwd) \
+        -c $(pwd)/.lemp/config/nginx/nginx.conf \
+        -e $(pwd)/.lemp/cache/logs/nginx-error.log
+    availability:
+      restart: on_failure

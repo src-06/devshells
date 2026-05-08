@@ -2,6 +2,23 @@
 
 A collection of Nix flake templates providing reproducible development environments with database support.
 
+## Requirements
+
+- [Nix](https://nixos.org/download.html) with flake support enabled
+- **Windows:** Use [WSL](https://docs.microsoft.com/en-us/windows/wsl/) with [Nix](https://nixos.org/download.html) installed inside the Linux distribution
+
+## Customization
+
+You can customize which packages you want to use in the generated `flake.nix`:
+
+```nix
+packages = with pkgs; [
+   ...
+];
+```
+
+To check package availability, visit [NixOS Search](https://search.nixos.org/packages).
+
 ## Templates
 
 | Template | Description |
@@ -10,6 +27,7 @@ A collection of Nix flake templates providing reproducible development environme
 | `postgresql` | PostgreSQL development environment with helper scripts |
 | `mariadb` | MariaDB development environment with helper scripts |
 | `prisma` | Prisma development environment with prisma-engines |
+| `lemp` | LEMP stack (Nginx, MariaDB, PHP) with process-compose |
 
 ## Usage
 
@@ -35,6 +53,12 @@ nix flake init --template github:src-06/devshells#mariadb
 
 ```bash
 nix flake init --template github:src-06/devshells#prisma
+```
+
+### LEMP Template
+
+```bash
+nix flake init --template github:src-06/devshells#lemp
 ```
 
 ## Database Templates
@@ -68,12 +92,25 @@ The Prisma template provides a development environment for working with Prisma O
 - **Includes:** `prisma-engines` (v7 by default, compatible with Prisma 5+)
 - **Includes:** OpenSSL dev libraries for native database connectors
 
+## LEMP Template
+
+The LEMP template provides a local LEMP stack using process-compose:
+
+- **Includes:** Nginx, MariaDB, and PHP
+- **Management:** Use `process-compose up` to start all services
+- **phpMyAdmin:** Included for database management (accessible via configured port)
+
+### Services:
+- **Nginx:** Port 8888 (HTTPS)
+- **PHP-FPM:** Runs via process-compose
+- **MariaDB:** Runs via process-compose
+
 ## Supported Systems
 
-- x86_64-linux
-- aarch64-linux
-- x86_64-darwin
-- aarch64-darwin
+| OS | Architecture |
+|----|--------------|
+| Linux | x86_64, aarch64 |
+| macOS | x86_64, aarch64 (Apple Silicon) |
 
 ## Getting Started
 

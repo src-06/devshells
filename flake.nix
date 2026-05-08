@@ -12,6 +12,11 @@
           description = "Empty Development Environment";
         };
 
+        lemp = {
+          path = ./lemp;
+          description = "LEMP Stack Development Environment";
+        };
+
         mariadb = {
           path = ./mariadb;
           description = "MariaDB Development Environment";
