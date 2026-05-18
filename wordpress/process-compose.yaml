@@ -1,0 +1,36 @@
+version: 0.5
+
+processes:
+  init:
+    command: |
+      bash services/scripts/init.sh
+
+  mariadb:
+    command: |
+      mariadbd \
+        --datadir=$(pwd)/services/cache/data \
+        --socket=$(pwd)/services/cache/run/mysqld.sock \
+        --port=3306 \
+        --bind-address=127.0.0.1 \
+        --pid-file=$(pwd)/services/cache/run/mysqld.pid \
+        --log-error=$(pwd)/services/cache/logs/mysqld.log
+    availability:
+      restart: on_failure
+
+  php-fpm:
+    command: |
+      php-fpm \
+        -p $(pwd) \
+        -c $(pwd)/services/config/fpm/php.ini \
+        -y $(pwd)/services/config/fpm/php-fpm.conf
+    availability:
+      restart: on_failure
+
+  nginx:
+    command: |
+      nginx \
+        -p $(pwd) \
+        -c $(pwd)/services/config/nginx/nginx.conf \
+        -e $(pwd)/services/cache/logs/nginx-error.log
+    availability:
+      restart: on_failure
