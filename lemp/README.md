@@ -27,11 +27,11 @@ A local LEMP stack (Linux, Nginx, MariaDB, PHP) development environment using Ni
 
 ## Database
 
-- **Host:** 127.0.0.1
-- **Port:** 3306
-- **User:** root
-- **Password:** (no password)
-- **Socket:** services/cache/run/mysqld.sock
+- **Host:** `127.0.0.1`
+- **Port:** `3306`
+- **User:** `root`
+- **Password:** `(no password)`
+- **Socket:** `services/cache/run/mysqld.sock`
 
 ## Files Structure
 

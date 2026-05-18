@@ -17,21 +17,6 @@
           description = "LEMP Stack Development Environment";
         };
 
-        mariadb = {
-          path = ./mariadb;
-          description = "MariaDB Development Environment";
-        };
-
-        postgresql = {
-          path = ./postgresql;
-          description = "PostgreSQL Development Environment";
-        };
-
-        prisma = {
-          path = ./prisma;
-          description = "Prisma Development Environment";
-        };
-
         wordpress = {
           path = ./wordpress;
           description = "WordPress Development Environment";
