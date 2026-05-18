@@ -31,6 +31,11 @@
           path = ./prisma;
           description = "Prisma Development Environment";
         };
+
+        wordpress = {
+          path = ./wordpress;
+          description = "WordPress Development Environment";
+        };
       };
     };
 }

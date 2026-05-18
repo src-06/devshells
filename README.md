@@ -1,6 +1,6 @@
 # DevShells
 
-A collection of Nix flake templates providing reproducible development environments with database support.
+A collection of Nix flake templates providing reproducible development environments.
 
 ## Requirements
 
@@ -28,37 +28,44 @@ To check package availability, visit [NixOS Search](https://search.nixos.org/pac
 | `mariadb` | MariaDB development environment with helper scripts |
 | `prisma` | Prisma development environment with prisma-engines |
 | `lemp` | LEMP stack (Nginx, MariaDB, PHP) with process-compose |
+| `wordpress` | WordPress local development environment with Nginx, PHP-FPM, and MariaDB |
 
 ## Usage
 
 ### Default (Empty) Template
 
 ```bash
-nix flake init --template github:src-06/devshells
+nix flake init -t github:src-06/devshells
 ```
 
 ### PostgreSQL Template
 
 ```bash
-nix flake init --template github:src-06/devshells#postgresql
+nix flake init -t github:src-06/devshells#postgresql
 ```
 
 ### MariaDB Template
 
 ```bash
-nix flake init --template github:src-06/devshells#mariadb
+nix flake init -t github:src-06/devshells#mariadb
 ```
 
 ### Prisma Template
 
 ```bash
-nix flake init --template github:src-06/devshells#prisma
+nix flake init -t github:src-06/devshells#prisma
 ```
 
 ### LEMP Template
 
 ```bash
-nix flake init --template github:src-06/devshells#lemp
+nix flake init -t github:src-06/devshells#lemp
+```
+
+### WordPress Template
+
+```bash
+nix flake init -t github:src-06/devshells#wordpress
 ```
 
 ## Database Templates
@@ -102,6 +109,20 @@ The LEMP template provides a local LEMP stack using process-compose:
 
 ### Services:
 - **Nginx:** [https://localhost:8888](https://localhost:8888) or [https://127.0.0.1:8888](https://127.0.0.1:8888)
+- **phpMyAdmin:** [https://localhost:8888/admin](https://localhost:8888/admin) or [https://127.0.0.1:8888/admin]
+- **PHP-FPM:** Runs via process-compose
+- **MariaDB:** Runs via process-compose
+
+## WordPress Template
+
+The WordPress template provides a local WordPress development environment with Nginx, PHP-FPM, and MariaDB using process-compose.
+
+- **Management:** Use `process-compose up` to start all services
+- **phpMyAdmin:** Included for database management
+
+### Services:
+- **WordPress:** [https://localhost:8888](https://localhost:8888) or [https://127.0.0.1:8888](https://127.0.0.1:8888)
+- **phpMyAdmin:** [https://localhost:8888/admin](https://localhost:8888/admin) or [https://127.0.0.1:8888/admin](https://127.0.0.1:8888/admin)
 - **PHP-FPM:** Runs via process-compose
 - **MariaDB:** Runs via process-compose
 
@@ -116,7 +137,7 @@ The LEMP template provides a local LEMP stack using process-compose:
 
 1. Initialize a template in your project:
    ```bash
-   nix flake init --template github:src-06/devshells#postgresql
+   nix flake init -t github:src-06/devshells#postgresql
    ```
 
 2. Enter the development shell:
