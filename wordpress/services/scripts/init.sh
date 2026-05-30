@@ -7,7 +7,11 @@ SOCKET_DIR="$CACHE_DIR/run/mysqld.sock"
 
 if [ ! -d "$DATA_DIR/mysql" ]; then
   mkdir -p "$DATA_DIR" "$CACHE_DIR/run" "$CACHE_DIR/logs"
+
+  MYSQL_BASEDIR="$(dirname "$(dirname "$(readlink -f "$(which mariadb-install-db)")")")"
+
   mariadb-install-db \
+    --basedir="$MYSQL_BASEDIR" \
     --datadir="$DATA_DIR" \
     --auth-root-authentication-method=normal \
     > /dev/null
