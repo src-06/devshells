@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  mssql-server:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql-dev
+    ports:
+      - "1433:1433"
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: P@ssw0r6
+    volumes:
+      - ./.mssql:/var/opt/mssql
+    deploy:
+      resources:
+        limits:
+          memory: 1500M
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'P@ssw0r6' -C -Q 'SELECT 1' || exit 1",
+        ]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
