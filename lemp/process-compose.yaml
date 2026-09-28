@@ -16,6 +16,9 @@ processes:
         --log-error=$(pwd)/services/cache/logs/mysqld.log
     availability:
       restart: on_failure
+    depends_on:
+      init:
+        condition: process_completed
 
   php-fpm:
     command: |
@@ -24,6 +27,9 @@ processes:
         -y $(pwd)/services/config/fpm/php-fpm.conf
     availability:
       restart: on_failure
+    depends_on:
+      init:
+        condition: process_completed
 
   nginx:
     command: |
@@ -33,3 +39,6 @@ processes:
         -e $(pwd)/services/cache/logs/nginx-error.log
     availability:
       restart: on_failure
+    depends_on:
+      init:
+        condition: process_completed
