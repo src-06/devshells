@@ -1,38 +1,20 @@
 #!/usr/bin/env bash
 
 {
-CACHE_DIR="$PWD/services/cache"
-DATA_DIR="$CACHE_DIR/data"
-SOCKET_DIR="$CACHE_DIR/run/mysqld.sock"
+  CACHE_DIR="$PWD/services/cache"
+  DATA_DIR="$CACHE_DIR/data"
 
-if [ ! -d "$DATA_DIR/mysql" ]; then
-  mkdir -p "$DATA_DIR" "$CACHE_DIR/run" "$CACHE_DIR/logs"
+  if [ ! -d "$DATA_DIR/mysql" ]; then
+    mkdir -p "$DATA_DIR" "$CACHE_DIR/run" "$CACHE_DIR/logs"
 
-  MYSQL_BASEDIR="$(dirname "$(dirname "$(readlink -f "$(which mariadb-install-db)")")")"
+    MYSQL_BASEDIR="$(dirname "$(dirname "$(readlink -f "$(which mariadb-install-db)")")")"
 
-  mariadb-install-db \
-    --basedir="$MYSQL_BASEDIR" \
-    --datadir="$DATA_DIR" \
-    --auth-root-authentication-method=normal \
-    > /dev/null
-
-  until mariadb-admin --socket="$SOCKET_DIR" ping &>/dev/null; do
-    sleep 1
-  done
-
-  mariadb --socket="$SOCKET_DIR" -u root <<EOF
-CREATE DATABASE IF NOT EXISTS wordpress;
-
-CREATE USER IF NOT EXISTS 'wordpress'@'localhost';
-
-ALTER USER 'wordpress'@'localhost'
-IDENTIFIED BY 'wordpress';
-
-GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpress'@'localhost';
-
-FLUSH PRIVILEGES;
-EOF
-fi
+    mariadb-install-db \
+      --basedir="$MYSQL_BASEDIR" \
+      --datadir="$DATA_DIR" \
+      --auth-root-authentication-method=normal \
+      >/dev/null
+  fi
 } >/dev/null 2>&1
 echo "<==========[ WORDPRESS ]==========>"
 echo "  WordPress:"
