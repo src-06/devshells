@@ -13,6 +13,7 @@ A collection of Nix flake templates providing reproducible development environme
 |----------|-------------|
 | `empty` | Minimal development environment template |
 | `lemp` | LEMP stack (Nginx, MariaDB, PHP) with process-compose |
+| `mssql` | Microsoft SQL Server development environment with process-compose |
 | `wordpress` | WordPress local development environment (Nginx, PHP-FPM, and MariaDB) with process-compose |
 
 ## Usage
@@ -27,6 +28,12 @@ nix flake init -t github:src-06/devshells
 
 ```bash
 nix flake init -t github:src-06/devshells#lemp
+```
+
+### MSSQL Template
+
+```bash
+nix flake init -t github:src-06/devshells#mssql
 ```
 
 ### WordPress Template
@@ -56,6 +63,25 @@ The LEMP template provides a local LEMP stack using process-compose:
 - **Port:** `3306`
 - **User:** `root`
 - **Password:** `(no password)`
+
+## MSSQL Template
+
+The MSSQL template provides a local Microsoft SQL Server development environment using process-compose with podman.
+
+- **Includes:** MSSQL Server 2022, sqlcmd, and podman
+- **Management:** Use `process-compose up` to start the server
+
+### Services
+
+- **MSSQL Server:** `localhost:1433`
+- **sqlcmd:** Pre-installed for command-line queries
+
+### MSSQL Configuration
+
+- **Host:** `localhost`
+- **Port:** `1433`
+- **User:** `sa`
+- **Password:** `P@ssw0r6`
 
 ## WordPress Template
 
