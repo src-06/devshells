@@ -6,7 +6,6 @@
   outputs = {nixpkgs, ...}: let
     supportedSystems = [
       "x86_64-linux"
-      "x86_64-darwin"
     ];
     forEachSupportedSystem = f:
       nixpkgs.lib.genAttrs supportedSystems (
@@ -23,13 +22,10 @@
             podman
             podman-compose
             process-compose
-            sqlcmd
+            (writeShellScript "sqlcmd" "podman exec -it mssqlsrv-dev /opt/mssql-tools/bin/sqlcmd")
           ];
 
           shellHook = ''
-            mkdir .mssql
-            chmod 777 .mssql
-
             echo "Run \"process-compose up\" to start MSSQL server"
           '';
         };

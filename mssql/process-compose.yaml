@@ -22,9 +22,19 @@ processes:
       mssql-server:
         condition: process_started
 
+  init-setup:
+    command: >
+      if [ ! -d ".mssql" ]; then
+        mkdir .mssql
+        chmod 777 .mssql
+      fi
+
   mssql-server:
     command: podman-compose up
     shutdown:
       command: podman-compose down
     availibility:
       restart: on-failure
+    depends_on:
+      init-setup:
+        condition: process_completed
