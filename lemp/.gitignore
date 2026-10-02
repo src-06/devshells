@@ -1,3 +1,7 @@
 services/cache
 services/phpMyAdmin
 services/config/nginx/ssl
+www/*
+!www/.working_directories
+!www/favicon.ico
+!www/index.php
