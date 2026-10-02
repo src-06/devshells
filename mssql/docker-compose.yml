@@ -2,19 +2,20 @@ version: "3.8"
 
 services:
   mssql-server:
-    image: mcr.microsoft.com/mssql/server:2022-latest
-    container_name: mssql-dev
+    image: mcr.microsoft.com/mssql/server:2025-latest
+    container_name: mssqlsrv-dev
     ports:
       - "1433:1433"
     environment:
       ACCEPT_EULA: Y
       MSSQL_SA_PASSWORD: P@ssw0r6
+      MSSQL_PID: Developer
     volumes:
       - ./.mssql:/var/opt/mssql
     deploy:
       resources:
         limits:
-          memory: 1500M
+          memory: 2048M
     healthcheck:
       test:
         [
