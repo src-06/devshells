@@ -1,15 +1,16 @@
 # LEMP Stack Development Environment
 
-A local LEMP stack (Linux, Nginx, MariaDB, PHP) development environment using Nix and process-compose.
+A local LEMP stack (Linux, Nginx, MariaDB, PHP) development environment using
+Nix and process-compose.
 
 ## Services
 
-| Service | URL | Port |
-|---------|-----|------|
-| Nginx | https://localhost:8888 | 8888 |
+| Service    | URL                          | Port |
+| ---------- | ---------------------------- | ---- |
+| Nginx      | https://localhost:8888       | 8888 |
 | phpMyAdmin | https://localhost:8888/admin | 8888 |
-| PHP-FPM | - | - |
-| MariaDB | 127.0.0.1 | 3306 |
+| PHP-FPM    | -                            | -    |
+| MariaDB    | 127.0.0.1                    | 3306 |
 
 ## Quick Start
 
@@ -60,3 +61,10 @@ lemp/
 - Web root: Edit `www/index.php` or add your PHP files
 - PHP config: Edit `services/config/fpm/php-fpm.conf`
 - Nginx config: Edit `services/config/nginx/nginx.conf`
+
+## Supported Systems
+
+| OS    | Architecture |
+| ----- | ------------ |
+| Linux | x86_64       |
+| macOS | x86_64       |

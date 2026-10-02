@@ -1,6 +1,7 @@
 # MSSQL Development Environment
 
-A Nix flake template for running Microsoft SQL Server locally using process-compose and podman.
+A Nix flake template for running Microsoft SQL Server locally using
+process-compose and podman.
 
 ## Requirements
 
@@ -17,9 +18,9 @@ process-compose up
 
 ## Services
 
-| Service | Host | Port | User | Password |
-|---------|------|------|------|----------|
-| MSSQL Server | localhost | 1433 | sa | P@ssw0r6 |
+| Service      | Host      | Port | User | Password |
+| ------------ | --------- | ---- | ---- | -------- |
+| MSSQL Server | localhost | 1433 | sa   | P@ssw0r6 |
 
 ## Packages Included
 
@@ -48,16 +49,15 @@ Press `F10` in process-compose to stop the server.
 
 ## Files
 
-| File | Description |
-|------|-------------|
-| `docker-compose.yml` | MSSQL Server container configuration |
-| `flake.nix` | Nix flake for development environment |
-| `process-compose.yaml` | Process manager configuration |
-| `.mssql/` | Data directory (gitignored) |
+| File                   | Description                           |
+| ---------------------- | ------------------------------------- |
+| `docker-compose.yml`   | MSSQL Server container configuration  |
+| `flake.nix`            | Nix flake for development environment |
+| `process-compose.yaml` | Process manager configuration         |
+| `.mssql/`              | Data directory (gitignored)           |
 
 ## Supported Systems
 
-| OS | Architecture |
-|----|--------------|
-| Linux | x86_64 |
-| macOS | x86_64 |
+| OS    | Architecture |
+| ----- | ------------ |
+| Linux | x86_64       |

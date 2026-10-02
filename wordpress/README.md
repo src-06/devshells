@@ -1,15 +1,16 @@
 # WordPress Development Environment
 
-A local WordPress development environment using Nix, Nginx, PHP-FPM, and MariaDB.
+A local WordPress development environment using Nix, Nginx, PHP-FPM, and
+MariaDB.
 
 ## Services
 
-| Service | URL | Port |
-|---------|-----|------|
-| WordPress | https://localhost:8888 | 8888 |
+| Service    | URL                          | Port |
+| ---------- | ---------------------------- | ---- |
+| WordPress  | https://localhost:8888       | 8888 |
 | phpMyAdmin | https://localhost:8888/admin | 8888 |
-| PHP-FPM | - | - |
-| MariaDB | 127.0.0.1 | 3306 |
+| PHP-FPM    | -                            | -    |
+| MariaDB    | 127.0.0.1                    | 3306 |
 
 ## Quick Start
 
@@ -29,13 +30,13 @@ A local WordPress development environment using Nix, Nginx, PHP-FPM, and MariaDB
 
 When setting up WordPress, use the following credentials:
 
-| Field | Value |
-|-------|-------|
+| Field         | Value     |
+| ------------- | --------- |
 | Database Name | wordpress |
-| Username | wordpress |
-| Password | wordpress |
+| Username      | wordpress |
+| Password      | wordpress |
 | Database Host | 127.0.0.1 |
-| Table Prefix | wp_ |
+| Table Prefix  | wp_       |
 
 > **Important:** Use `127.0.0.1` instead of `localhost` for the database host.
 
@@ -65,3 +66,10 @@ wordpress/
 - WordPress files: Edit files in `wordpress/` directory
 - PHP config: Edit `services/config/fpm/php.ini` or `php-fpm.conf`
 - Nginx config: Edit `services/config/nginx/nginx.conf`
+
+## Supported Systems
+
+| OS    | Architecture |
+| ----- | ------------ |
+| Linux | x86_64       |
+| macOS | x86_64       |
